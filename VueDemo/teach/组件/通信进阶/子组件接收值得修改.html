@@ -1,0 +1,70 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+ 
+    <div id="vue"> 
+    <use_fu :zi_receive_1="fu_message_1"  ></use_fu>
+    <hr>
+    <hr>
+   父组件数据： {{fu_message_1}}
+</div> 
+    <template id="q1">
+        <div>
+            <!--  使用v-model绑定接收的数据
+                修改接收的数据 
+                不修改父子组件里面的数据
+                    -->
+          <h3>data：{{zi_message_1}}</h3> 
+          <h3>props：{{zi_receive_1}}</h3> 
+          input_model_zi_receive-1:  
+          <input type="text" v-model="zi_receive_1">
+         
+         
+         
+         <!-- 在子组件数据中 使用数据接收 props从父组件传来的数据
+             使用 v-model绑定子组件数据  只修改子组件的数据   接收的数据不保留-->
+
+             <!-- 一般化从父组件里面直接接收的数据是不改变的
+                 在接收后赋值给 子组件里面的数据后 直接对子组件里面的数据进行修改 -->
+          <hr>
+          input_model_zi_message2  
+          <input type="text" v-model="zi_message_2">
+          <p></p>
+        data:<h2>{{zi_message_2}}</h2>
+         props:<h2>{{zi_receive_1}}</h2>
+          <hr>
+        </div>
+    </template>
+ <script> 
+ 
+ const q1={
+     template:'#q1',
+     data() {
+         return {
+             zi_message_1:'子组件里面数据',
+             zi_message_2:this.zi_receive_1,
+         }
+     },
+     props:['zi_receive_1','zi_receive_2'],
+ }
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+          fu_message_1:'这是父组件里面的数据——1',
+          fu_message_2:'这是父组件里面的数据——2'
+      },
+      components:{
+          use_fu:q1
+      }
+        }) 
+        document.qs
+    </script> 
+</body> 
+</html> 

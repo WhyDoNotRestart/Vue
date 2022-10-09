@@ -1,0 +1,75 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+  <!-- //父组件模板 -->
+    <div id="vue"> 
+        <use1 @first_event="fu_monitor"></use1>
+        <!-- 使用父组件的自定义监听函数 不加参数  默认把子组件响应发送的事件汇总的参数传入 -->
+    </div> 
+    <!-- 子组件模板 -->
+    <template id="q1">
+        <div>
+            <button v-for="item,index in person" 
+                    @click="seek(item)">{{item.name+':'+item.action}}</button>
+        </div>
+    </template>
+
+ 
+ <script> 
+ //子组件
+    const s1 ={
+        template:'#q1',
+        data() {
+            return {
+                person:[
+                {id:1,name:'王啃啃',action:'带好吃的'},
+                {id:2,name:'戴新瑞',action:'盼'},
+                {id:2,name:'背锅侠',action:'哭'},
+                {id:2,name:'大黄脸',action:'放烂'},
+                ]
+            }
+        },
+        methods: {
+            seek(send){
+                console.log(send.name);//send为一个对象
+               // this.$emit(event, ${[…args]})
+                       // (发送事件的名称，参数)
+            //子组件响应发送事件   父组件在模板监听事件
+            this.$emit('first_event',send)
+            },
+        },
+
+    }
+    //父组件
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { }, 
+      components:{
+            use1:s1
+         },
+        methods:{
+            fu_monitor(item){//item为父组件从子组件中接收的数据   item <--- send(对象)
+                console.log("父组件监听在进行");
+                console.log(item.name);
+            }
+        }
+    }) 
+    </script> 
+</body> 
+</html> 
+<script>
+    /*
+    子组件请求响应的函数 使用在子组件的模板中 
+   
+    this.$emit(event, ${[…args]})
+    (发送事件的名称，参数)
+    
+    */
+</script>

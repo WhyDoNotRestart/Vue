@@ -1,0 +1,60 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+<div id="vue"> 
+  <input type="text" v-model="action">
+  <p> {{action}} </p>
+  <p>-----------------</p>
+  <input type="text" v-model="person.name">
+  <input type="text" v-model="person.new_action">
+    </div> 
+    <script> 
+        const vu = new Vue({ 
+            el: '#vue', 
+            data: { 
+                   action: 'hello vue', 
+                   person: { 
+                       name: '王啃啃', 
+                       new_action:'撕逼'
+                       }, 
+                methods:{ 
+                }, 
+            } ,
+            //    vue的监听属性用来监听vue中变化  wathc
+            watch: {
+                //action的值发生改变就是运行function函数
+                action(new_value,old_value){
+                    console.log('你变了',new_value,old_value);
+                },
+               /* person(value){
+                    console.log('你变了',value);
+                    //当监听为一个对象（复杂数据类型）的时候只是监听他的地址有没有变化
+                    //当在控制台输出 
+                    //               vu.person={name:'戴新瑞',new_action:'卷'}
+                    //地址发生改变 才会调用函数
+                },*/
+
+                //复杂类型的监听需要使用对象
+                person:{
+                    deep:true,
+                    handler(value){ //value 指的是改变后对象
+                        console.log('你变了',value);
+                    }
+                }
+            },
+        }) 
+    </script> 
+</body> 
+</html> 
+
+
+
+
+

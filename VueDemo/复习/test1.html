@@ -1,0 +1,45 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+    <style>
+       .active{
+            color: rgb(29, 192, 51);
+        }
+    </style>
+</head> 
+<body> 
+ 
+    <div id="vue"> 
+   <ul>
+       <li v-for="(item,index) in message" @click="f1(index)" :class="{active:myIndex===index}">{{item}}</li>
+   </ul>
+    </div> 
+ <script> 
+   const vu = new Vue({  
+      el: '#vue', 
+      data: { 
+        action: 'hello vue', 
+       message:['王啃啃','王乖乖','欠揍','此心难恨'],
+       myIndex:0,
+      },
+      methods:{ 
+          f1(index){
+              this.myIndex=index;
+          }
+         
+                      
+      }, 
+      watch: {
+         action:function(new_value,old_value){
+         }
+      }
+        }) 
+    </script> 
+     
+</body> 
+</html> 

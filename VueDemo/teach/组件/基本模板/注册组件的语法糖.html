@@ -1,0 +1,49 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+    <div id="vue"> 
+   <yong></yong>
+   <yong2></yong2>
+    </div> 
+ <script> 
+// 语法糖写法
+Vue.component('yong',{
+    template:`
+    <div>
+    <h1>你好啊</h1>
+    </div>
+    `
+})
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: {}, 
+      components:  {
+          //对象的一个属性
+          //使用名：模板
+           'yong2':{
+            template:`
+            <div> 
+             <p>这是第二次</p>
+            </div>
+            `
+           }
+       } ,
+        }) 
+    </script> 
+</body> 
+</html>
+<script>
+   /*
+1.创建构造器对象
+    const s1 =Vue.extend({template``})
+2. 注册组件
+    Vue.component(调用明,构造器名)*/ 
+</script>
+

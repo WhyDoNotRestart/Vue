@@ -1,0 +1,65 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+ 
+    <div id="vue"> 
+        <yong1></yong1>
+    </div> 
+    <template id="yong">
+        <div>
+            <h1>当前计数为：{{count}}</h1>
+            <!-- 子模板里面方法在子组件里面使用 -->
+            <button @click="f1">+</button>
+            <button @click="f2">-</button>
+        </div>
+    </template>
+ <script> 
+ Vue.component('yong1',{
+     template:'#yong',
+     data(){
+         return{
+             count:0
+         }
+     }
+     ,
+     methods:{
+             f1(){
+                 this.count++
+             },
+             f2(){
+                 this.count--
+             }
+         }
+ })
+
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+        action: 'hello vue', 
+        person: { 
+           name: '王啃啃', 
+        }, 
+      },
+    
+        }) 
+    </script> 
+    <script>
+        function abc(){
+            return{
+                name:'ni',
+                age:18
+            }
+        }
+        let obj1 =abc();
+        let obj2 =abc();
+        
+    </script>
+</body> 
+</html> 

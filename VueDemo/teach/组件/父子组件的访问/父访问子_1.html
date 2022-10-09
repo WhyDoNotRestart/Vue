@@ -1,0 +1,121 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+ 
+    <div id="vue"> 
+        {{m_set}}
+       <hr>
+        <use_fu ></use_fu>
+        <use_fu ></use_fu>
+        <use_fu ></use_fu>
+
+        <button @click="seek">点击 </button>
+    </div> 
+    <template id="comp">
+        <div>
+            {{mz}}
+            <use_zi_zi></use_zi_zi>
+        </div>
+    </template>
+    <template id="comp_1">
+        <div>
+            <h1>你好</h1>
+        </div>
+    </template>
+ <script> 
+ const zi_1={
+    template:'#comp_1',
+    methods: {
+        zi_zi_methods(){
+            console.log("这是子子组件的方法");
+        }
+    },
+    data() {
+        return {
+            mzz:'这是子子的数据'
+        }
+    },
+ }
+
+ const zi={
+     template:'#comp',
+     components:{
+         use_zi_zi:zi_1
+     },
+     data() {
+         return {
+             mz:'子数据'
+         }
+     },
+     methods: {
+         zi_methods_1(){
+             console.log("这是子组件的方法1");
+         },
+         zi_methods_2(){
+             console.log("这是子组件的方法2");
+         },
+         zi_methods_3(){
+             console.log("这是子组件的方法3");
+         },
+     },
+   
+ }
+ 
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+          mf:'父数据',
+          m_set:'nihao'
+      },
+      methods:{ 
+            seek(){
+                //访问子组件获取到子组件的值 并赋值给父组件
+              this.m_set=  this.$children[0].mz
+              console.log(this.m_set);
+            
+
+
+                console.log(this.$children); //看看到子组件
+                this.$children[0].zi_methods_1()//只识别到一个字组件的使用
+                console.log('');
+
+                //子组件多次使用后 数组里面有三个
+                this.$children[1].zi_methods_2();
+                this.$children[2].zi_methods_3();
+                console.log('');
+
+
+                //在子组件里面添加子组件
+                    //首先必须在子组件模板中使用，不然获取不到
+                this.$children[0].$children[0].zi_zi_methods()
+                this.$children[1].$children[0].zi_zi_methods();
+                console.log('');
+
+                //访问数据
+               console.log(this.$children[0].mz); 
+               console.log(this.$children[0].$children[0].mzz);
+                console.log('');
+
+                //使用for
+                for(let index of this.$children){
+                 //   console.log(index);
+                    index.zi_methods_1();
+                }
+            }          
+      }, 
+      components:{
+          use_fu:zi
+      }
+      
+    }) 
+    </script> 
+     
+</body> 
+</html> 

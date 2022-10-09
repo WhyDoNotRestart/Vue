@@ -1,0 +1,64 @@
+ <!DOCTYPE html>
+ <html lang="en">
+
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <script src="vue.min.js"></script>
+ </head>
+
+ <body>
+
+
+     <div id="vue">
+         <second ref="zi_cmp"></second>
+         <button @click="ref_use">点击</button>
+     </div>
+     <script>
+         const s2 = Vue.extend({
+             data() {
+                 return {
+                     zi_message: 44
+                 }
+             },
+
+             template: `
+            <div>
+                <h1>我是第二个</h1>
+                <h1>王乖乖</h1>
+                <h3>乌拉</h3>
+                {{zi_message}}
+                <button @clikc="zi_methods">子方法</button>
+            </div>
+            `,
+             methods: {
+                 zi_methods() {
+                     console.log('zi');
+                 }
+             }
+
+         })
+         const vu = new Vue({
+             el: '#vue',
+             data: {},
+             components: {
+                 second: s2
+             },
+             methods: {
+                 ref_use() {
+                     console.log(this.$refs);
+                     console.log(this.$refs.zi_methods);
+                 }
+
+             }
+
+
+
+         })
+     </script>
+
+ </body>
+
+ </html>

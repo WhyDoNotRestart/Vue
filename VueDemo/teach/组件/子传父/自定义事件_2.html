@@ -1,0 +1,67 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+ 
+    <div id="vue"> 
+        <use_fu @zi_send_event="monitor_receive"></use_fu>
+    </div> 
+    <template id="q1">
+        <div>
+            <h1>{{message}}</h1>
+            <button @click="send(item)"  
+                    v-for="item in person" 
+                    >
+            {{item.id+':'+item.name}}</button>
+        </div>
+    </template> 
+ <script> 
+ const s1={
+     template:'#q1',
+     data() {
+         return {
+             message:'你好',
+             person:[
+                 {id:1,name:'王啃啃',action:'看'},
+                 {id:1,name:'戴新瑞',action:'盼'  },
+                 {id:1,name:'黄脸婆',action:'噫歪'},
+                 {id:1,name:'背锅侠',action:'背锅'},
+                 {id:1,name:'王乖乖',action:'该打'},
+             ]
+         }
+     },
+     methods:{
+         //参数为发送的数据
+        send(zi_send_message){
+            console.log(zi_send_message);
+            console.log(zi_send_message.name);
+            //
+            this.$emit('zi_send_event',zi_send_message);
+        }
+     }
+ }
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+      },
+      methods:{ 
+          //参数接收
+          monitor_receive(receive){
+              console.log("父组件的监听和接收正常运行");
+              console.log(receive.name);
+          }
+      }, 
+      components:{
+          use_fu:s1,
+      }
+        }) 
+    </script> 
+     
+</body> 
+</html> 

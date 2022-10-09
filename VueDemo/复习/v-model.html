@@ -1,0 +1,78 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+ 
+    <div id="vue"> 
+<!-- radio  实现单选需要互斥 使name一样-->
+<!-- 双向绑定  获得value 的值 删除name的值 也同样可以实现 -->
+        <input type="radio" name="sex" v-model="se" value="男">男性
+        <input type="radio" name="sex" v-model="se" value="女">女性
+        <h2>您选择的是{{se}}</h2>
+        <hr>
+<!-- checkbox  单选框-->
+        <input type="checkbox" v-model="agree">同意协议
+        <button :disabled="!agree">下一步</button>
+       <h2>您的选择是{{agree}}</h2>
+<!-- checkbox  多选框 -->
+<!-- 获取的是 input中的 value值 -->
+        <input type="checkbox" v-model="hobby" value="打篮球1">打篮球
+        <input type="checkbox" v-model="hobby" value="写代码2">写代码
+        <input type="checkbox" v-model="hobby" value="吃饭3">吃饭
+        <input type="checkbox" v-model="hobby" value="听音乐4">听音乐
+        <h2>您的爱好是{{hobby}}</h2>
+        <hr>
+<!-- select 单选 -->
+        <select name="" id="" v-model="food">
+            <option value="馒头"    >馒头</option>
+            <option value="鸭血"    >鸭血</option>
+            <option value="剩米饭"  >剩米饭</option>
+            <option value="挂面"    >挂面</option>
+        </select>
+        <h2>您常吃的是{{food}}</h2>
+        <hr>
+<!-- select 多选 -->
+        <select name="abc"  v-model="foods" multiple>
+            <option value="馒头"    >馒头</option>
+            <option value="鸭血"    >鸭血</option>
+            <option value="剩米饭"  >剩米饭</option>
+            <option value="挂面"    >挂面</option>
+        </select>
+        <h2>您常吃的是{{foods}}</h2>
+
+    <!-- 修饰符 -->
+    <!-- lazy
+        一般的会让 视图和数据同步改变。使用lazy 让数据失去焦点或者回车使才会更新 -->
+    <!-- number
+        一般情况，输入的内容被当成字符串处理，使用number可以降输入内容转为数字类型 -->
+    <!-- trim 
+         去掉内容首位的空格-->
+         <input type="text" name="" id="" v-model.lazy="action">
+         {{action}}
+         <hr>
+         <input type="text" name="" id="" v-model.number="number1">
+       <p>{{number1}}=== {{typeof number1}}</p>  
+    
+        </div> 
+ <script> 
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+        action:  '  hello vue  '  , 
+        se:'男', //实现默认值就放,
+        agree:false,
+        hobby:[],
+        food:'馒头',
+        foods:[],
+        number1:''
+      },
+        }) 
+    </script> 
+</body> 
+</html> 

@@ -1,0 +1,41 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+ 
+    <div id="vue"> 
+   <h1> {{action}} </h1> 
+    </div> 
+ <script> 
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+        action: 'hello vue', 
+        person: { 
+           name: '王啃啃', 
+        }, 
+      },
+      methods:{ 
+                      
+      }, 
+ 
+        }) 
+    </script> 
+     
+</body> 
+</html> 
+<script>
+    /*
+   1. vue生命周期：一个vue实例从new Vue开始创建到被销毁
+   2. 生命周期函数（钩子函数） vue 的生命周期是确定好了。
+      但是如果我们希望能参与 vue的生命周期 需要用到钩子函数
+      vue 会在特定时期调用特定函数
+ 
+    */
+</script>

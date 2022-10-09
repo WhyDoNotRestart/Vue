@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>父传子</title>
+	<script src="vue.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<!-- 3 通过:message="message"将data中的数据传递给了props -->
+		<child-cpn :message_zi="message_fu" :d1="hobbies"></child-cpn>
+		<!-- <父组件    :子接收=父传入   ><父组件> -->
+	</div>
+</body>
+
+<template id="childCpn">
+	<div>
+		<p>{{hello}}</p>
+		<ul>
+			<li v-for="(item,index) in d1">{{index +':'+item}}</li>
+		</ul>
+		<h1>{{none1+'||没有在组件调用使用v-model'}}</h1>
+		<h2>{{d2}}</h2>
+
+	<p>子组件自己的数据 : {{message_zi}}</p>	
+	</div>
+</template>
+<script type="text/javascript">
+	//子构造器
+	const s1 = {
+	template: '#childCpn',
+	
+	props: {
+		message_zi: {
+			type: String, //规定的类型
+			default: '没有传值时的默认值'
+		},
+		d1: {
+		//类型是对象或者数组时，默认值必须是一个函数
+		type: Array,
+		default () {
+			return [1, 7, 5, 4, 6, 40]
+		    }
+		  },
+		none1: {
+		type: String,
+		default: '没有传值时的默认值',
+		// required:true 必须要传这个
+		  },
+		d2: {
+		//类型是对象或者数组时，默认值必须是一个函数
+		type: Array,
+		default () {
+			return [1, 7, 5, 4, 6, 40]
+		}
+			}
+		}
+	,
+	data() {
+		return {
+			hello:'你好'
+		}
+	},
+	}
+
+
+	let app = new Vue({
+		el: '#app',
+		//父组件中的数据
+		data: {
+			message_fu: '我是父组件的内容' //1 Vue实例中的data
+				,
+			hobbies: [1, 2, 3, 4, 5, 6]
+		},
+		components: {
+			//子组件在父组件中注册
+			'child-cpn': s1
+		}
+	})
+</script>
+
+</html>

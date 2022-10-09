@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>{{f1}}</div>
+        <hr>
+        <menu-item title="从外界接收的值"></menu-item>
+
+        <menu-item :title="handle()"></menu-item>
+
+        <menu-item :content="f1"></menu-item>
+    </div>
+    <script type="text/javascript" src="vue.min.js"></script>
+    <script type="text/javascript">
+        // /*
+        //    父组件向子组件传值-基本使用
+        //  */
+
+        //子组件
+        Vue.component('menu-item', {
+            props: ['title', 'content'], //子组件接收区域
+            data: function () {
+                return {
+                    c1: '子组件本身的数据'
+                }
+            },
+            template: '<div>{{c1 + "----" + title + "-----" + content}}</div>',
+            /*      component:{
+                  'menu-item2': {
+                  props: ['title', 'content'], //子组件接收区域
+                  data: function() {
+                      return {
+                          c1: '子组件本身的数据'
+                      }
+                  },
+                  template: '<div>{{c1 + "----" + title + "-----" + content}}</div>'
+              }
+                  }*/
+        });
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                f1: '父组件中内容',
+            },
+            methods: {
+                handle: function () {
+                    return '接收父组件函数中的返回值';
+
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

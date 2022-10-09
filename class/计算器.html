@@ -1,0 +1,71 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.js"></script> 
+</head> 
+<body> 
+ 
+    <div id="vue"> 
+     <p>第一个数  <input type="text"  v-model.number="first"></p>
+     <p>第二个数 <input type="text"  v-model.number="second"></p>
+     <select name="" id="" v-model="selected">
+        
+        <option value="+">+</option>
+        <option value="+">-</option>
+        <option value="+">*</option>
+        <option value="+">/</option>
+    </select>
+    <p><button @click="out">点击计算</button></p>
+    
+
+     <p>结果是：{{outcome}}</p>
+
+
+    </div> 
+ <script> 
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+        first:'',
+        second:'',
+        outcome:'',
+        selected:''
+         
+      },
+      methods:{ 
+               out(){
+                if(!this.first ||!this.second){
+                    this.outcome='请输入'
+                }else{
+                    console.log(this.selected);
+                    switch (this.selected) {
+                    case "+":
+                        this.outcome = parseInt(this.first) + parseInt(this.second)
+                        break;
+                    case "-":
+                        this.outcome = parseInt(this.first) - parseInt(this.second)
+                        break;
+                    case "*":
+                        this.outcome = parseInt(this.first) * parseInt(this.second)
+                        break;
+                    case "/":
+                        this.outcome = parseInt(this.first) / parseInt(this.second)
+                        break;
+                }
+
+                }
+               }     
+      }, 
+      
+      watch: {
+        
+      }
+        }) 
+    </script> 
+     
+</body> 
+</html> 

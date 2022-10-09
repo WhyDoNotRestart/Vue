@@ -1,0 +1,69 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+ <!-- vue组件是 可复用的实例 -->
+  
+    <div id="vue"> 
+        <my_cmp></my_cmp>
+        <my_cmp></my_cmp>
+        <my_cmp></my_cmp>
+      
+        <hr>
+        <my_cmp1></my_cmp1>
+        <my_cmp1></my_cmp1>
+        <my_cmp1></my_cmp1>
+        <hr>
+       
+    </div> 
+    <script> 
+    //组件的使用在vue的实例范围内
+    //1.创建组件的构造器对象
+    const cmp =Vue.extend({
+        template:
+        //模板需要加div
+        `
+        <div>
+        <h3>这是组件的模板</h3>
+        <p>你好啊</p>
+        </div>
+        `
+    })
+    //2.注册全局组件 可以在多个vue实例使用
+    // (使用名,构造器对象)
+ 
+      Vue.component('my_cmp',cmp);
+    
+    //3.局部组件  在实例中注册
+
+    // 定义一个组件 命名为 button-conte
+    // Vue.component('button-conte',{
+    //     data(){
+    //         return{
+    //             count:0
+    //         }
+    //     },
+    //     template:'<button @click="count++">You clicked me{{count}} times.</button>'
+    // })
+
+
+        const vu = new Vue({ 
+            el: '#vue', 
+            data: { 
+               
+            } ,
+            components:{
+                    // 使用名：构造器对象
+                my_cmp1:cmp,
+                },
+        }) 
+    </script> 
+     
+</body> 
+</html> 

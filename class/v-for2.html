@@ -1,0 +1,57 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.js"></script> 
+</head> 
+<body> 
+ 
+    <div id="vue"> 
+        <ul>
+            <li v-for="item,index in list">{{item}}</li>
+        </ul>
+        <button @click="up">升序</button>
+        <button @click="down">降序</button>
+        <button @click="ret">逆序</button>
+
+    </div> 
+ <script> 
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+        list:[1,5,4,10,51,92,14]
+       
+      },
+      methods:{ 
+        up(){
+            this.list.sort((a,b)=>{
+                return a-b
+            })
+
+        },
+        down(){
+            this.list.sort((a,b)=>{
+                return b-a
+            })
+
+        },
+        ret(){
+            var newArray = [];
+        for (var i = 0; i < this.list.length; i++) {
+            newArray.unshift(this.list[i]);
+        }
+        this.list=newArray
+
+
+        }
+                      
+      }, 
+      
+        }) 
+    </script> 
+     
+</body> 
+</html> 

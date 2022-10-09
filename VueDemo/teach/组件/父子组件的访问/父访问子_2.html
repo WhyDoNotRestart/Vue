@@ -1,0 +1,98 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+ 
+    <div id="vue"> 
+        {{m_set}}
+       <hr>
+        <use_fu ref="q1"></use_fu>
+        <use_fu ref="q2"></use_fu>
+        <use_fu ref="q3"></use_fu>
+
+        <button @click="seek">点击 </button>
+    </div> 
+    <template id="comp">
+        <div>
+            {{mz}}
+            <use_zi_zi></use_zi_zi>
+        </div>
+    </template>
+    <template id="comp_1">
+        <div>
+            <h1>你好</h1>
+        </div>
+    </template>
+ <script> 
+ const zi_1={
+    template:'#comp_1',
+    methods: {
+        zi_zi_methods(){
+            console.log("这是子子组件的方法");
+        }
+    },
+    data() {
+        return {
+            mzz:'这是子子的数据'
+        }
+    },
+ }
+
+ const zi={
+     template:'#comp',
+     components:{
+         use_zi_zi:zi_1
+     },
+     data() {
+         return {
+             mz:'子数据'
+         }
+     },
+     methods: {
+         zi_methods_1(){
+             console.log("这是子组件的方法1");
+         },
+         zi_methods_2(){
+             console.log("这是子组件的方法2");
+         },
+         zi_methods_3(){
+             console.log("这是子组件的方法3");
+         },
+     },
+   
+ }
+ 
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+          mf:'父数据',
+          m_set:'nihao'
+      },
+      methods:{ 
+            seek(){
+                //前面只是机械性的获得，如果在后续的程序添加仅仅单纯的利用下标灵活性差
+                //在父组件标记
+                //得到一个数组，如果使用了 带有子组件的父组件 并在父组件进行标记
+                  // 子组件则会添加到该数组
+              console.log(this.$refs);
+                console.log(this.$refs.q1.mz);
+    
+
+
+            }   
+      }, 
+      components:{
+          use_fu:zi
+      }
+      
+    }) 
+    </script> 
+     
+</body> 
+</html> 

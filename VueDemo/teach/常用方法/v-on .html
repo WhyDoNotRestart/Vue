@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+
+    <div id="vuee">
+        <p>{{action}}</p>
+    <button @click="reserve" >干他</button>
+    <button v-on:click="fle += 1">{{fle}}</button>
+    <button @click="great('大笨猪王啃啃')">点我</button>
+
+    <!-- 按键修饰符  修饰按键的 -->
+    <!-- @事件名.事件修饰符或者按键修饰符-->
+    <!-- 在输入框中输入后按下空格控制台输出，只有一次 -->
+    <input type="text" @keyup.enter.stop="fun" v-model="action">
+    
+    </div>
+
+    <script>
+        const vu = new Vue({
+            el: '#vuee',
+            data: {
+                fle:0,
+                action: 'hello vue'
+            },
+
+            methods:{ 
+                great(a){
+                    console.log(a);
+                },
+                fun(){
+                    console.log(this.action);
+                },
+            reserve(){
+                console.log(this.action); //所有this 都指向 Vue对象
+                    // 1.字符串没有reverse 方法 数组有
+                    //2.使用字符串方法 split()切割字符串转化为数组
+                    //3.使用join()转为字符串
+                   this.action= this.action.split('').reverse().join('')
+
+                }
+            }
+        })
+    </script>
+</body>
+</html>

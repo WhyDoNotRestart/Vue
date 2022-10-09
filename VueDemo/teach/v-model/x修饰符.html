@@ -1,0 +1,41 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+    <!-- .lazy
+一般情况下，在input的 v-model是一直在同步 输入的内容与显示的内容，不过再添加上
+ .lazy后，就会变成：在失去焦点或按回车时才更新数据 -->
+ 
+    <div id="vue"> 
+        <input type="text" name="" v-model.lazy="mes" id="">
+    <p>{{mes}}</p>
+
+    </div> 
+ <script> 
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+        mes: 'hello vue', 
+        person: { 
+           name: '王啃啃', 
+        }, 
+      },
+      methods:{ 
+                      
+      }, 
+      watch: {
+         mes:function(new_value,old_value){
+            console.log(this.mes);
+         }
+      }
+        }) 
+    </script> 
+     
+</body> 
+</html> 

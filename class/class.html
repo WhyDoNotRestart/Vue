@@ -1,0 +1,35 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+    <div id="vue"> 
+   <h1> {{action}} </h1> 
+    </div> 
+ <script> 
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+        action: 'hello vue', 
+        person: { 
+           name: '王啃啃', 
+        }, 
+      },
+      methods:{ 
+                      
+      }, 
+      watch: {
+         action:function(new_value,old_value){
+         }
+      }
+        }) 
+    </script> 
+     
+</body> 
+</body> 
+</html> 

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .active{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        margin-top: 20px;
+    }
+    .active1{
+        color: chartreuse;
+        font-size: 20px;
+        text-align: center;
+    }
+</style>
+<body>
+    <div id="vuee">
+<!--访问数据,在视图里面访问action数据   -->
+        <h1>{{action}} </h1>
+        <p v-bing:id="id_name">{{person.name+':'}}{{person.age}} </p>
+        <img :src="img_self1" alt="">
+        <img :src="person.img_self3" alt="">
+<!-- 简写 -->
+        <img :src="img_self2" alt="">
+
+<!-- class与style 的绑定  -->
+   <!-- 传入对象判断 class的样式是否有效 -->
+        <div :class="{active:isActive}">嘻嘻嘻嘻嘻嘻寻寻寻学校</div>  
+<!-- 使用三元运算符 在数组中取决于 -->
+        <div :class="['active','active1']"></div>
+        <div :class="[isActive ? 'active':'active1']">黑云压城城欲摧</div>
+        <div :class="[isActive? 'active':'' , isGreen?'active1':'']">甲光向日金鳞开</div>
+        </div>
+        <!-- 给：class 一个对象动态切换class   
+             表示 active这个class存在取决于数据属性isActive -->
+   
+    <script src="vue.min.js"></script>
+    <!-- {{}} 插值表达式 -->
+    <script>
+        //引入vue 文件  会暴露一个vue 构造函数
+        //初始化vue  指定视图和数据
+        const vu = new Vue({
+            // element : 指定vue管理的视图 摸个盒子的选择器
+            el: '#vuee', //可以管理div
+            data: { //指定数据 并添加给Vue对象
+                action: 'hello vue',
+                id_name:'name',
+                img_self1: '../素材/Snipaste_2022-04-06_21-08-46.png',
+                img_self2:'../素材/11.png',
+                isActive:true,
+                isGreen:true,
+                
+                person: {
+                    name: '王啃啃',
+                    age: 25,
+                    img_self3:'../素材/222.png'
+                }
+            }
+        })
+        // 1. new Vue
+        //2. 指定视图 和数据
+    </script>
+
+</body>
+
+</html>

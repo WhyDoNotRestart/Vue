@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="vue">
+        <h1> {{action}} </h1>
+        <button @click="f1">动</button>
+        <button @click="f2">停</button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        const vu = new Vue({
+            el: '#vue',
+            data: {
+                action: '一块钱打王乖乖，可锤 可抽 可呼 买三赠二',
+                person: {
+                    name: '王啃啃',
+                }
+            },
+            methods:{
+                f1(){
+                   // cleatInterval(this.timeId); //防止多个定时器
+
+                   //如果有定时器再跑 直接结束
+                    if(this.timeId){
+                        return;
+                    }
+
+                    //如果使用 function this.action 为undifined
+                    //使用箭头函数  无function  this.action指vue
+                    //将定时器 作为 vue 对象的属性
+                    this.timeId= setInterval(()=>{
+                        //slice(0,1)  从零截取到1不包含1
+                        //slice(1) 从1到最后全部截取
+                         this.action = this.action.slice(1)+this.action.slice(0,1)
+                      //   this.action =this.action.slice(this.action.length-1)+this.action.slice(0,this.action.length)
+                     },300)
+                },
+                f2(){
+                    clearInterval(this.timeId)
+
+                    //把定时器id清空
+                    this.timeId=''
+                }
+            }
+        })
+    </script>
+</body>
+</html>
+

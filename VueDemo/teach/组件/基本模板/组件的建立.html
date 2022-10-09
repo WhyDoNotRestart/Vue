@@ -1,0 +1,73 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+ 
+    <div id="vue"> 
+        <my_cmp></my_cmp>
+        <use1></use1>
+        <use2></use2>
+        <hr>
+        <use3></use3>
+    </div> 
+
+    <template id="s1">
+        <div>
+            <h1>Nihao </h1>
+            <h2>组件</h2>
+        
+        </div>
+    </template>
+ <script> 
+
+//第一种 Vue.etend  配合 component(使用名,构造器)方法
+//创建构造器
+const cmp =Vue.extend({
+        template:'#s1'
+    })
+      Vue.component('my_cmp',cmp);
+
+//第二种
+// 直接使用 component(使用名，模板对象)方法
+Vue.component('use1',{
+    template:'#s1'
+})
+
+//第三种
+const aa ={
+    template:'#s1'
+}
+Vue.component('use2',aa);
+
+//第四种
+const bb={
+    template:'#s1'
+}
+Vue.component('ues3',bb);
+
+
+   const vu = new Vue({ 
+      el: '#vue', 
+      component:{
+        // '使用名':模板
+       
+        
+      }
+     
+        }) 
+    </script> 
+     
+</body> 
+</html> 
+<script>
+    const name ='戴新瑞';
+    const obj={
+        name //es6增强写法
+    }
+</script>

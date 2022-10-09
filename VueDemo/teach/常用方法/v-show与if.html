@@ -1,0 +1,54 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+ 
+    <div id="vue"> 
+<!-- 条件渲染 -->
+        <!-- v-if 通过seen的值来 插入或者移除元素 -->
+   <div v-if="type ==='A'"> 第一个内容</div>
+   <div v-else-if="type ==='v'">第二个内容</div>
+   <div v-else>第三个内容</div>
+        <!--
+             v-show="boolean"  （一个盒子频繁使用）
+             v-if="boolean"     （一个盒子少用）
+
+             show通过display样式
+             if通过删除和创建一个元素
+
+             v-if=""
+             v-else-if=""
+             v-else
+        
+        
+        
+        
+        -->
+   <div v-show="judgement" > 相当于对此div 设置了display 隐藏和显示的属性 此标签还是占有内容</div>
+    </div> 
+    <script> 
+        const vu = new Vue({ 
+            el: '#vue', 
+            data: { 
+                action: 'hello vue', 
+                seen:false,
+                type:"C",
+                judgement:true,
+                person: { 
+                    name: '王啃啃', 
+                }, 
+                methods:{ 
+ 
+                } 
+            } 
+        }) 
+    </script> 
+     
+</body> 
+</html> 

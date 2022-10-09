@@ -1,0 +1,48 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.js"></script> 
+    <style>
+        .name{
+            color: bisque;
+            font-size: 50px;
+        }
+        .name1{
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+</head> 
+<body> 
+    <!-- 当按下回车键，打印inpute中的内容 -->
+ 
+    <div id="vue"> 
+   <h1> {{action}} </h1> 
+   <input type="text" v-model="action" @keyup="fnq">
+    </div> 
+    <script> 
+        const vu = new Vue({ 
+            el: '#vue', 
+            data: { 
+                action: 'hello vue', 
+                person: { 
+                    name: '王啃啃', 
+                }
+            } ,
+            methods:{ 
+                    fnq(e){
+                        if(e.keyCode==13){
+                            console.log(this.action);
+
+                        }
+                    }
+                } 
+        }) 
+    </script> 
+     
+</body> 
+</html> 

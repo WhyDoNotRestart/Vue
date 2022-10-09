@@ -1,0 +1,63 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+
+ 
+    <div id="vue"> 
+        <second></second>
+    </div> 
+ <script> 
+        const s1 =Vue.extend({
+            template:      
+            `
+            <div>
+                <h1>我是第一个</h1>
+                <h1>王乖乖</h1>
+                <h2>减肥失败,舍友撕逼</h2>
+                <h3>乌拉</h3>
+                <yong2></yong2>
+            </div>
+            `
+        })
+
+        const s2 =Vue.extend({
+            template:      
+            `
+            <div>
+                <h1>我是第二个</h1>
+                <h1>王乖乖</h1>
+                <h2>减肥失败,舍友撕逼</h2>
+                <h3>乌拉</h3>
+                
+                <first></first>
+            </div>
+            `,
+            //子组件
+            components:{
+                first:s1
+            }
+            
+        })
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: {  
+      },
+      components:{
+          second:s2
+
+      }
+
+
+      
+        }) 
+    </script> 
+     
+</body> 
+</html> 

@@ -1,0 +1,198 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+    <style>
+        table tr td{
+            border: 1px solid black;
+            text-align: center;
+            
+        }
+    </style>
+</head> 
+<body> 
+ 
+    <div id="vue"> 
+        <table v-if="books.length!=0">
+            <tr>
+                <td></td>
+                <td>书籍名称</td>
+                <td>出版日期</td>
+                <td>价格</td>
+                <td>购买数量</td>
+                <td>操作</td>
+            </tr>
+            <!-- 访问数组里面的对象 -->
+            <tr v-for="item,index in books">
+                <!-- 访问对象的属性
+                <td v-for="value in item">{{value}}</td> -->
+
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.data}}</td>
+             
+                <td>{{item.price | getPrice}}</td>
+                <td>
+                    <button
+                     @click="f1(index)" 
+                     :disabled="item.count <=1">-</button>
+                    {{item.count}}
+                    <button @click="f2(index)">+</button>
+                </td>
+                <td><button @click="f3(index)">移除</button></td>
+            </tr>
+            <!-- <tr>
+                <td>1</td>
+                <td>算法</td>
+                <td>006-9</td>
+                <td>￥95</td>
+                <td>
+                    <button value="-">-</button>
+                    {{quality}}
+                    <button value="+">+</button>
+                </td>
+                <td><button @click="f1" >{{message}}</button></td>
+            <tr>
+                <td>2</td>
+                <td>编程艺术</td>
+                <td>006-2</td>
+                <td>￥67</td>
+                <td>
+                    <button value="-">-</button>
+                    {{quality}}
+                    <button value="+">+</button>
+                </td>
+                <td><button @click="f1" >{{message}}</button></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>编程思想</td>
+                <td>008-10</td>
+                <td>￥158</td>
+                <td>
+                    <button value="-">-</button>
+                    {{quality}}
+                    <button value="+">+</button>
+                </td>
+                <td><button @click="f1" >{{message}}</button></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>面试八股文</td>
+                <td>015-7</td>
+                <td>￥140</td>
+                <td>
+                    <button @click="f3">-</button>
+                    {{quality}}
+                    <button @click="f2">+</button>
+                </td>
+                <td><button @click="f1" >{{message}}</button></td>
+            </tr> -->
+        </table>
+        <p>总价格为：{{sum_price | getPrice}}</p>
+       <p>{{books.length}}</p> 
+        <h3  :disabled="books.length==0">购物车为空</h3>
+    </div> 
+      
+ <script> 
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+          message:'移除',
+          quality:1,
+
+          books:[
+              {id:1,
+               name:'算法导论',
+               data:"006-10",
+               price:85.4,
+               count:1
+            },
+            {id:2,
+               name:'编程艺术',
+               data:"012-07",
+               price:125.4,
+               count:1
+            },
+            {id:3,
+               name:'编程思想',
+               data:"007-11",
+               price:215.4,
+               count:1
+            },
+            {id:4,
+               name:'组成原理',
+               data:"001-7",
+               price:135.4,
+               count:1
+            }
+          ]
+
+      },
+      methods:{ 
+          f1(index){
+              if( this.books[index].count>=2){
+              this.books[index].count--;
+
+          }
+        }
+          ,f2(index){
+            this.books[index].count++
+          },
+          f3(index){
+            this.books.splice(index,1);
+          },
+          getPrice(price){
+              return '￥'+ price.toFixed(2);
+          }
+                      
+      }, 
+     computed:{
+        sum_price(){
+            let sum =0;
+           
+            /*for(let i =0;i<this.books.length;i++){
+                sum+=this.books[i].price;
+            }*/
+
+            // for(let i in this.books){
+            //     sum+=this.books[i].price;
+            // }
+
+
+         /*   for(let item of this.books){
+                sum+=item.price *item.count;
+            }*/
+
+            
+            return sum;
+        }
+     },
+
+     //过滤器失效
+      filter:{
+          getPrice(price){
+            // <!-- toFixed(n)保留n个位数 -->
+              return '￥'+ price.toFixed(2);
+          }
+      }
+        }) 
+    </script> 
+     
+</body> 
+</html> 
+<!-- 
+    1.生成表格 tr td ：使用v-for   但是数据怎么解决？
+        数据： 使用集合 元素为对象 循环 内容为对象的属性
+    2. 价格的处理： 使用过滤器对价格直接加工
+    3. 实现count的增减： 初始每个对象的count是相同的 又因为是集合元素为对象 不好对具体的某一个对象的count进行修改
+        修改： 通过获取每个对象的id来定位count  进行修改  进行循环添加index
+    4. 对增减的修改 {
+        1. 减到1就不能减
+        2. 减到1 按键就灰色  
+    }
+ -->

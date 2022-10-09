@@ -1,0 +1,78 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+ 
+    <div id="vue"> 
+   <h1> {{action}} </h1> 
+   <h2>{{fullName}}</h2>
+   <h3>{{sum_price}}</h3>
+    </div> 
+    <script> 
+        const vu = new Vue({ 
+            el: '#vue', 
+            data: { 
+                action: 'hello vue', 
+                action1:'你好啊',
+                books:[
+              {id:1,
+               name:'算法导论',
+               data:"006-10",
+               price:85.4,
+               count:1
+            },
+            {id:2,
+               name:'编程艺术',
+               data:"012-07",
+               price:125.4,
+               count:1
+            },
+            {id:3,
+               name:'编程思想',
+               data:"007-11",
+               price:215.4,
+               count:1
+            },
+            {id:4,
+               name:'组成原理',
+               data:"001-7",
+               price:135.4,
+               count:1
+            }
+          ]
+                 },
+                methods:{ 
+                } ,
+             
+            computed:{
+                //data中的数据需要进行函数型的加工处理
+                fullName(){
+                    return this.action+','+this.action1;
+                },
+                sum_price(){
+                    let result=0;
+                    for(let i =0;i<this.books.length;i++){
+                        result+=this.books[i].price;
+                    }
+                    return result;
+                }
+                    
+                }
+        }) 
+    </script> 
+     
+</body> 
+</html> 
+<script>
+    /*
+计算属性可以存放需要计算和其他逻辑的才能得到的数据 实际上是一个属性
+
+计算属性在写放上是一个函数 计算属性要有计算的逻辑，逻辑在函数中 ，计算属性的值 对应 函数的返回值
+    */
+</script>

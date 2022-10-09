@@ -1,0 +1,92 @@
+ <!DOCTYPE html>
+ <html lang="en">
+
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <script src="vue.min.js"></script>
+ </head> 
+
+ <body>
+     <div id="vue">
+         <use_fu :fu_receive_1="action_grandfather"></use_fu>
+     </div>
+     <template id="t1">
+         <div>
+             <h2>子组件 </h2>
+             <h3> 子组件从父组件接受信息：{{son_receive_1}}</h3>
+         </div>
+     </template>
+
+     <template id="t2">
+         <div>
+             <h1>父组件</h1>
+             <use_son :son_receive_1="action_fu"></use_son>
+             <h2>父组件从祖父组件接受的信息:{{action_fu}}</h2>
+         </div>
+     </template>
+    
+    <script>
+         //子构造器
+         const e1 = {
+             template: '#t1',
+             //子组件中的数据
+             data() {
+                 return {
+                     action_son:'这是子组件的数据'
+                 }
+             },
+             props:['son_receive_1','son_receive_2']
+
+         }
+         //父构造器
+         const e2 = {
+             //在父组件的构造器中注册子组件
+             components: {
+                 use_son: e1
+             },
+             template: '#t2' , 
+            // 并在父模板中 使用子组件
+            
+            //父组件的数据
+             data() {
+                 return {
+                 action_fu:'父组件的数据',
+                 hobby_fu:[11,22,33,44,55],
+                 props:['fu_receive_1']
+                     
+                 }
+             },
+         }
+
+         const vu = new Vue({
+             el: '#vue',
+             data: {
+                //祖父组件的数据
+                action_grandfather:'祖父中的数据'
+             },
+             //在祖父组件中注册父组件
+             components: {
+                 use_fu: e2
+             }
+         })
+     </script>
+ </body>
+ </html>
+ <script>
+     /*
+     父传子
+
+        在子组件中定义 props 放入接收名 用来接受父组件传来的数据
+        
+        在父组件的模板中 
+            使用子标签 使用v-bind绑定数据
+     <子组件使用   :子接受 = 父数据  >  之后子组件中props中的接收名就有数据
+    
+    props
+     
+     
+     */
+ </script>

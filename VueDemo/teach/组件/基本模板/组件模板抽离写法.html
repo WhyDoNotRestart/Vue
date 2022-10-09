@@ -1,0 +1,64 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+ 
+    <div id="vue"> 
+   <h1> {{action}} </h1> 
+    </div> 
+
+<!-- 写法1 -->
+    <script type="text/x-template" id="yong11">
+        <div>
+         <h1>我是第一个</h1>
+        <h1>王乖乖</h1>
+        </div>
+       
+    </script>
+<!-- 写法2 -->
+<template id=" yong22">
+    <div>
+        <h2>减肥失败,舍友撕逼</h2>
+        <h3>乌拉</h3>
+    </div>
+</template>
+   
+ <script> 
+ Vue.component('yong',{
+     template:`
+     <div>
+         <h1>我是第一个</h1>
+         <h1>王乖乖</h1>
+         <h2>减肥失败,舍友撕逼</h2>
+         <h3>乌拉</h3>
+    </div>
+        
+     `
+ })
+ Vue.component('yong1',{
+     template:'#yong11'
+ })
+ Vue.component('yong2',{
+     template:'#yong22'
+ })
+
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+        action: 'hello vue', 
+        person: { 
+           name: '王啃啃', 
+        }, 
+    
+      }
+        }) 
+    </script> 
+     
+</body> 
+</html> 

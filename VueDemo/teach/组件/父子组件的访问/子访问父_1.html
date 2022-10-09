@@ -1,0 +1,72 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+    
+</head> 
+<body> 
+ 
+    <div id="vue" > 
+        <use_fu></use_fu>
+    </div> 
+    <template id="a1">
+        <div>
+            {{mz}}
+            {{mz_1}}
+            <button @click="zi_visited">监听</button>
+        </div>
+    </template>
+ <script> 
+
+ const zi={
+     template:'#a1',
+     data() {
+         return {
+             mz:'子数据',
+             mz_1:null
+         }
+     },
+     methods:{
+         zi_visited(){
+             console.log('hi _子组件');
+             //访问父组件
+             console.log(this.$parent);
+             console.log(this.$parent.fu());
+             console.log(this.$parent.mf);
+
+             this.mz_1=this.$parent.mf
+             console.log(this.mz_1);
+
+
+             //访问根组件
+             console.log(this.$root);
+             //子组件的复用性很高  同时也需要很高的独立性
+               //如果子组件访问到父组件的值   子组件并且复用
+                  //如果复用的里面并没有访问父组件里面的值出现问题
+                     //造成父子组件耦合度过高 复用性低
+         }
+     }
+ }
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+          mf:'父数据'
+      },
+      methods:{ 
+             fu(){
+                 console.log("你好_父组件");
+             }         
+      }, 
+      components:{
+          use_fu:zi
+      }
+      
+    }) 
+    </script> 
+     
+</body> 
+</html> 

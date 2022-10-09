@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .active{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        margin-top: 20px;
+    }
+    .active1{
+        color: chartreuse;
+        font-size: 20px;
+        text-align: center;
+    }
+</style>
+<body>
+    <div id="vue">
+        <!-- 静态绑定  -->
+        <!-- background-color  要写成backgroundColor -->
+        <div :style="{color : color_change , background:backgroundColor}" >使用数据库中的数据改变样式</div>
+        <div :class="['active','active1']">为元素静态绑定style效果</div>
+        <div :class="{active:true,active1:isActive}">使用简易对象</div>
+        <div :class="obj">使用对象</div>
+        <div :class="obj1">使用数组（但是数组不方便修改 还是建议使用对象）</div>
+       
+        <!-- 动态绑定 -->
+        <div :class="{active:isActive}">使用数据库中的判定来决定 数据库中传入给class的数据是否生效</div>  
+        <div :class="[isActive ? 'active':'active1']">动态的通过isActive的值来绑定值</div>
+        <div :class="[isActive? 'active':'' , isGreen?'active1':'']">动态的通过isActive的值来绑定值</div>
+       
+        <!-- 结合 -->
+        <div :style="{
+                color:color_change,
+                textAlign:center,
+                width:width1,
+                height:height1,
+                backgroundColor:isActive? backgroundColor :'',
+                <!-- 最好还是全都放在数据的一个对象中 -->
+                <!-- 值backgroundColor不要加双引号 -->
+            }"> 
+            黑云压城城欲摧
+        </div>
+    </div>
+    <script src="vue.min.js"></script>
+    <script>
+        const vu = new Vue({
+            el: '#vue', 
+            data: { 
+                action: 'hello vue',
+                isActive:true,
+                isGreen:true,
+                color_change:'blue',
+                backgroundColor:'green',
+                width1:'500px',
+                height1:'400px',
+                center:'center',
+                
+                obj:{
+                    active:true,
+                    active1:true,
+
+                },
+                obj1:[
+                    "active","active1"
+                ]
+            }
+        })
+    </script>
+
+</body>
+
+</html>
+
+

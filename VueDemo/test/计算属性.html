@@ -1,0 +1,59 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+    <div id="vue">
+ <input type="text" placeholder="你的姓是" v-model="a1">
+ <input type="text " placeholder="你的名" v-model="a2">
+ <input type="text" placeholder="你的名字是" v-model="a3">
+    </div> 
+    <script> 
+        const vu = new Vue({ 
+            el: '#vue', 
+            data: { 
+                a1:'',
+                a2:''
+            } ,
+            computed:{
+                a3:{
+                    get(){
+                        return  this.a1+this.a2
+                    },
+                    // set(value){
+                    //     console.log(value);
+                    // }   value =a1+a2   输出value
+                    set(value){
+                        console.log(value);
+                        this.a1=value.split(' ')[0] //将value分割取第1个  
+                        this.a2=value.split(' ')[1]
+                    }
+                }
+            }
+        }) 
+    </script> 
+     <script>
+        //  var str 'I Love+you'
+        //  var str ='I+Love you'
+        //  var str ='I+Love+you'
+         var str ='I Love you'
+        var cc1 =str.split('',(1,4)) //以数组方式取第一个到第四个
+         var cc2 =str.split('',1) //转为数组方式
+         var cc3=str.split(' ')[0]  //转为字符串方式 取第一个
+         var  cc4=str.split(' ')[1] //转为字符串 取到第 1+3个
+         var cc5=str.split('')[0]  //转为字符串方式 取第一个
+         var  cc6=str.split('')[1] //转为字符串 取到第 1+3个
+         console.log(cc1);
+         console.log(cc2);
+         console.log(cc3);
+         console.log(cc4);
+         console.log(cc5);
+         console.log(cc6);
+     </script> 
+</body> 
+</html> 

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>vue入门</title>
+		<!-- 第1步  引入vue -->
+		<script src="vue.js"></script>
+	</head>
+	<body>
+
+		<div id="app">
+			<!-- <img src="images/中秋2.gif" > -->
+			<!-- 1.绑定单个属性 -->
+			<img v-bind:src="picpath">
+			<img :src="picpath">
+			<!-- 2.绑定多个属性 -->
+			<a :href="ref" :title='title'>{{name}}</a>
+			<!-- 3.绑定一个对象 -->
+			<img v-bind='imgobj'>
+			<!--  4.绑定对象的多个属性 -->
+			<img v-bind="{src:imgobj.src,width:imgobj.width,height:imgobj.height}">
+		</div>
+
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					picpath: 'images/中秋2.gif',
+					ref: 'http://www.njcit.cn',
+					title: '南京信息',
+					name: '南京信息职业技术学院',
+					//对象
+					imgobj: {
+						src: 'images/中秋3.gif',
+						width: '100px',
+						height: '100px',
+						alt: '中秋'
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

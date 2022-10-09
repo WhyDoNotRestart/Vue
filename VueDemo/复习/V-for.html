@@ -1,0 +1,48 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+    <div id="vue"> 
+        <!-- 遍历数组 -->
+   <ul>
+       <li v-for="item,index in message">{{index+1}}.{{item}}</li>
+   </ul>
+  
+   <!-- 遍历对象 -->
+   <ul>
+ <li v-for="key,value,index in person">
+    {{index}}:{{key}}:{{value}}
+   </li>
+   </ul>
+    </div> 
+ <script> 
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+        person:{
+            name:'王乖乖',
+            age:18,
+            sex:'女',
+            appearance:'beautiful'
+
+        },
+        message:['王乖乖','王啃啃','戴新瑞','背锅侠','黄脸婆'] ,
+      },
+      methods:{ 
+                      
+      }, 
+      watch: {
+         action:function(new_value,old_value){
+         }
+      }
+        }) 
+    </script> 
+     
+</body> 
+</html> 

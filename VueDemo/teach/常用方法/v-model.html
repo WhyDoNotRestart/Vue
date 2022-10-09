@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+    <div id="vuee">
+        <p> {{person.name+':'}} </p>
+        <input type="text" v-model="person.name" name="" id="">
+        <!-- v-model 会忽视原有表单的value checked selected 等属性的初始值 -->
+        <!-- 通过设置v-model改变选项的默认值，获取到选择选择选项后city的值 -->
+       <!-- 对于单选框，选择和取消对应false和true，使用v-model来进行获取状态 -->
+        <select v-model="city">
+            <option value="1">北京</option>
+            <option value="3">上海</option>
+            <option value="2">南京</option>
+            <option value="4">连云港</option>
+        </select> <p>{{city}} </p>
+        <input type="checkbox" v-model="IsCheck"> <p>{{IsCheck}} </p>
+        <img :src="img_self2" alt="">
+    </div>
+
+
+    <div id="app">
+        <input type="checkbox" value="Java" v-model="language">Java<br>
+        <input type="checkbox" value="Python" v-model="language">Python<br>
+        <input type="checkbox" value="Swift" v-model="language">Swift<br>
+        <p>
+            {{language}}
+        </p>
+        <button @click="submit" >提交</button>
+    </div>
+  
+  
+    
+
+    <script>
+              var app = new Vue({
+            el:"#app",
+            data:{
+                //数组中的值,就是被选中的元素的value属性值
+                language:[]
+            },
+            methods:{
+                submit(){
+                    console.log(this.language);
+                }
+            }
+        });
+    
+
+        const vu = new Vue({
+            el: '#vuee',
+            data: {
+                action: 'hello vue',
+                img_self2:'../素材/11.png',
+                city:3,
+                IsCheck:false,
+                person: {
+                    name: '王啃啃',
+                    age: 25,
+                }
+            }
+        })
+
+       
+    </script>
+
+
+
+    
+   
+</body>
+</html>
+<script>
+    /*
+    v-model ='值'
+    双向数据绑定：视图和数据相互产生作用
+    数据 《=》视图
+    */
+</script>

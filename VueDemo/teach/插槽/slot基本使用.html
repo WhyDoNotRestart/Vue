@@ -1,0 +1,64 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+ 
+    <div id="vue"> 
+        <use_fu>
+            <button></button>
+            <p>在插槽处放标签，替换默认标签 </p>
+        </use_fu>
+        <hr>
+        <use_fu>
+        </use_fu>
+        <hr>
+        <use_fu>
+        </use_fu>
+
+    </div> 
+    <template id="a1">
+        <div>
+            {{mz}}
+            <p>放一个插槽，用于功能拓展，如果有多个则一起作为替换元素，无标签不占有位置，</p>
+            <slot><h5>这里放默认的标签</h5></slot>
+        </div>
+    </template>
+ <script> 
+ const zi={
+     template:'#a1',
+     data() {
+         return {
+             mz:'子数据'
+         }
+     },
+ }
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+          mf:'父数据'
+      },
+      methods:{ 
+                      
+      }, 
+      components:{
+          use_fu:zi
+      }
+      
+    }) 
+    </script> 
+     
+</body> 
+</html> 
+<script>
+    /*
+    为什么使用插槽
+       使用插槽,使组件更有哦扩展性
+       取共性，加异性
+    */
+</script>

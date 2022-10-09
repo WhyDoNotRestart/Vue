@@ -1,0 +1,45 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.js"></script> 
+</head> 
+<body> 
+ 
+    <div id="vue"> 
+     第一个数  <input type="text"  v-model="first">
+     第二个数 <input type="text"  v-model="second">
+     <button @click="compare">比较</button>
+     <p>{{outcome}}</p>
+
+
+    </div> 
+ <script> 
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+        first:'',
+        second:'',
+        outcome:''
+         
+      },
+      methods:{ 
+        compare(){
+            if(this.first>this.second){
+                this.outcome='第一个数大于第二个数'
+            }
+            if(this.first<this.second){
+                this.outcome='第一个数小于第二个数'
+            }
+        }
+                      
+      }, 
+     
+        }) 
+    </script> 
+     
+</body> 
+</html> 

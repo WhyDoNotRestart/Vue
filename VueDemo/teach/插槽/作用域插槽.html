@@ -1,0 +1,128 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+    <script>
+        /*
+        父组件替换插槽的标签 数据由子组件来提供
+        作用域插槽就是父组件在调用子组件的时候给子组件传了一个插槽，
+        这个插槽为作用域插槽，该插槽必须放在template标签里面，
+        同时声明从子组件接收的数据放在一个自定义属性内，
+        并定义该数据的渲染方式。
+
+
+            对比直接访问获取值和传值，该方式不需要在组件里面创建接收数据，可在使用时创建标签
+        */
+    </script>
+   <!-- 使用访问获得数据 -->
+    <!-- <div id="vue"> 
+        <button  @click="get_son_method()">点击显示</button>
+        <use_fu>
+            <button slot="aa1" v-for="item in rm" >{{item+'0'}}</button>  
+        </use_fu>
+    </div> 
+    <template id="a1">
+        <div>
+            <slot name="aa1"><p>你好</p></slot>
+         <slot>
+             <ul>
+                 <li v-for="item in person">{{item}}</li>
+             </ul>
+         </slot>
+        </div>
+    </template>
+
+<script>
+    /*
+    父组件替换插槽的标签 数据由子组件来提供
+
+    作用域插槽就是父组件在调用子组件的时候给子组件传了一个插槽，
+    这个插槽为作用域插槽，该插槽必须放在template标签里面，
+    同时声明从子组件接收的数据放在一个自定义属性内，
+    并定义该数据的渲染方式。
+    
+    */
+</script>
+ <script> 
+ const zi={
+     template:'#a1',
+     data() {
+         return {
+             person:[1,2,3,4,5]
+         }
+     },
+ }
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+          mf:'父数据',
+          rm:[]
+      },
+      methods:{ 
+          get_son_method(){
+            this.rm=this.$children[0].person
+            console.log('调用');
+          }
+                      
+      }, 
+      components:{
+          use_fu:zi
+      }
+      
+    }) 
+    </script>  -->
+     
+    <div id="vue"> 
+        <use_fu></use_fu>
+        <use_fu>
+            <template   #cc="receive_box">
+                <!-- 通过template 获取在子组件中的 绑定的子组件数据 -->
+                <span v-for="item in receive_box.son_data">{{item}}</span>
+               <div v-for="item in receive_box.son_data">{{receive_box.son_data.join('--')}}</div>
+            </template>
+        </use_fu>
+    </div> 
+    <!-- 在子组件中 slot中设置访问器
+            在父组件的使用中 使用 template 指定插槽并命名接收器
+                在template 使用接收器和访问器-->
+    <template id="a1">
+        <div>
+         <slot  :son_data="person" name="cc">
+             <ul>
+                 <li v-for="item in person">{{item}}</li>
+             </ul>
+         </slot>
+        </div>
+    </template>
+
+
+ <script> 
+ const zi={
+     template:'#a1',
+     data() {
+         return {
+             person:[1,2,3,4,5]
+         }
+     },
+ }
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+          mf:'父数据',
+      },
+      methods:{ 
+      }, 
+      components:{
+          use_fu:zi
+      }
+    }) 
+    </script> 
+
+</body> 
+</html> 

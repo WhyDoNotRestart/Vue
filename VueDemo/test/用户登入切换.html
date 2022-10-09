@@ -1,0 +1,40 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+ 
+    <div id="vue"> 
+        <label for="name">{{show}}</label>
+ <input type="text" :placeholder="t" id="name">
+ <button @click="f1">点击切换类型</button>
+    </div> 
+ <script> 
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+        isUser:false,
+        show:'用户登入',
+        t:'用户登入',
+      },
+      methods:{ 
+          f1(){
+              this.show=this.isUser?'用户登入':'用户邮箱'
+              this.isUser=!this.isUser;
+            //  this.t=this.t!=''? this.show:'';
+              
+          },
+      }, 
+      computed:{
+         
+      }
+        }) 
+    </script> 
+     
+</body> 
+</html> 

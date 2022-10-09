@@ -1,0 +1,58 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.js"></script> 
+    <style>
+        img{ 
+            background: 100% 100%;
+            width: 200px;
+            height: 200px;
+        }
+       .content { 
+        display: flex;
+       }
+    </style>
+</head> 
+<body> 
+ 
+    <div id="vue"> 
+        <div class="content" v-for="item,index in list">
+            <div><img :src="item.img_src" alt=""></div>
+            <div class="text">
+                <p>{{item.id}}</p>
+                <p>{{item.name}}</p>
+            </div>
+        </div>
+    </div> 
+ <script> 
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+        list:[
+            {name:'狮子',
+            id:'1',
+        img_src:'../素材/狮子.jpg'},
+            {name:'白虎',
+            id:'2',
+        img_src:'../素材/白虎1.jpg'},
+            {name:'黑熊',
+            id:'3',
+        img_src:'../素材/黑熊.jpg'},
+            {name:'黑熊1',
+            id:'4',
+        img_src:'../素材/黑熊1.jpg'},
+        ] 
+      },
+      methods:{ 
+                      
+      }, 
+      
+        }) 
+    </script> 
+     
+</body> 
+</html> 

@@ -1,0 +1,16 @@
+v0.1lues with 
+You've added another git repository inside your current repository.Support for password authentication was removed on August 13, 2021.
+
+
+Support for password authentication was removed on August 13,2021. Please use a persona
+
+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
+
+git remote set-url origin  https://<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>@github.com/WhyDoNotRestart/JS_Height.git
+
+fatal: helper error (-1): User cancelled dialog.
+warning: adding embedded git repository
+branch 'main' set up to track 'origin/main'.
+error: failed to push some refs to
+warning: adding embedded git repository
+error: please commit or stash them.

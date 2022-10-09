@@ -1,0 +1,75 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <style>
+     #cc {
+         background-color: blueviolet;
+     }
+ </style>
+
+ <head>
+
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+
+ </head>
+
+ <body>
+     <!-- 当click2镶嵌在click1里面  
+    点击了 最外边的click1
+     则同时点击了click1 和click2 
+    在click2 加入stop属性  click2发动后就停止
+
+    
+    -->
+     <div id="vue">
+         <h1> {{action}} </h1>
+         <a href="https://juejin.cn/" @click.stop.prevent="fna">跳转</a>
+         <div @click="click1" :id="id">click1
+             <div @click="click2" .stop :id="id">click2</div>
+         </div>
+         <div></div>
+
+
+
+     </div>
+
+
+     <script src="vue.js"></script>
+     <script>
+         const vu = new Vue({
+             el: '#vue',
+             data: {
+                 action: 'hello vue',
+                 id: 'cc',
+                 person: {
+                     name: '王啃啃',
+                 }
+             },
+             methods: {
+                 fna() {
+                     console.log('222');
+                 },
+                 click1() {
+                     console.log('click1');
+                 },
+                 click2() {
+                     console.log('click2');
+                 }
+             }
+         })
+     </script>
+
+ </body>
+
+ </html>
+ <script>
+     /*
+    .stop ：阻止事件冒泡, 也就是当前元素发生事件,但当前元素的父元素不发生该事件
+    .prevent ：阻止默认事件发生
+    .capture ：使用事件捕获模式, 主动获取子元素发生事件, 把获取到的事件当自己的事件执行
+    .self ：只有元素自身触发事件才执行。（冒泡或捕获的都不执行）
+    .once ：只执行一次
+    */
+ </script>

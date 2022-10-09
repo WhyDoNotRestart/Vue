@@ -1,0 +1,56 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+ <!-- v-for 遍历数组或者对象-->
+    <div id="vue"> 
+   <ul>
+
+     <li v-for="value in hobby ">{{value}}</li>
+       <!-- v-for="遍历的值,值索引 in 数组" :key="值"-->
+       <li v-for="value,index in project " :key="value"> 
+          {{"数组的索引index:"+index}} {{value.message}}
+       </li>
+
+
+       <!-- v-for ="对象的属性,对象的键 in 对象" -->
+       <li v-for="value,key in object">
+        {{"对象的键："+key}}   {{"值为:"+value}}
+       </li>
+   </ul> 
+
+   <!-- 使用 for  需要指定key属性 -->
+   <!-- 
+       就地更新
+       vue在数据发生变化时 把需要更新的一部分视图进行更新，不会更新所有的视图
+    -->
+    </div> 
+    <script> 
+        const vu = new Vue({ 
+            el: '#vue', 
+            data: { 
+                action: 'hello vue', 
+                hobby:['1','2','3'],
+               project:[ //每一个数组元素都是对象
+                   {message:'Fo'},
+                   {message:'Vo'}
+               ] ,
+               object:{
+                   name:"大笨猪<=====>王晨晨",
+                   age:18,
+                   sex:"女",
+                   dream:"make a pig"
+               }
+
+            } 
+        }) 
+    </script> 
+     
+</body> 
+</html> 

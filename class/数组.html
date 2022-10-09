@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+
+    <div id="vue">
+        <ul>
+            <li v-for="item,index in list">{{item}}</li>
+        </ul>
+        <input type="text" v-model.lazy="content">
+        <p><button @click="push">push</button></p>
+        <p><button @click="unshift">unshift</button></p>
+        <p><button @click="pop">pop</button></p>
+        <p><button @click="shift">shift</button></p>
+        <p><button @click="splice">指定位置添加</button></p>
+
+    </div>
+    <script>
+        const vu = new Vue({
+            el: '#vue',
+            data: {
+                content:'',
+                list: ['炸年糕', '红烧肉', '月饼', '草莓']
+
+            },
+            methods: {
+                push() {
+                    this.list.push(this.content)
+
+                },
+                unshift() {
+                    this.list.unshift(this.content)
+
+                },
+                pop() {
+                    this.list.pop()
+
+                },
+                shift() {
+                    this.list.shift()
+
+                },
+                splice() {
+                    this.list.splice(2,0,this.content)
+
+                }
+
+
+            },
+
+        }) 
+    </script>
+
+</body>
+
+</html>

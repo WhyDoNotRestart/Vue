@@ -1,0 +1,54 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+    <div id="vue"> 
+        <!-- 函数运行五次，每次重新计算 -->
+   <h1> {{getFullName()}} </h1> 
+   <h1> {{getFullName()}} </h1> 
+   <h1> {{getFullName()}} </h1> 
+   <h1> {{getFullName()}} </h1> 
+   <h1> {{getFullName()}} </h1> 
+   <hr>
+   <!-- 计算属性只运行了一次 输出五个 内容无变化 直接返回 -->
+   <h1> {{fullName}} </h1> 
+   <h1> {{fullName}} </h1> 
+   <h1> {{fullName}} </h1> 
+   <h1> {{fullName}} </h1> 
+   <h1> {{fullName}} </h1> 
+    </div> 
+ <script> 
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+        action: 'hello vue', 
+        action1:'你好',
+        person: { 
+           name: '王啃啃', 
+        }, 
+      },
+
+      methods:{ 
+          getFullName(){
+              return this.action+this.action1
+          }
+                      
+      }, 
+      
+      computed:{
+          fullName(){
+              return this.action+this.action1
+          }
+      }
+      
+        }) 
+    </script> 
+     
+</body> 
+</html> 

@@ -1,0 +1,82 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+ 
+    <div id="vue"> 
+    <use_fu></use_fu>
+    </div> 
+    <template id="fu">
+        <div>
+            <h1>你好</h1>
+            <use_zi :mess1="mess1_fu"></use_zi>
+            <h1>{{mess1_fu}}</h1>
+        </div>
+    </template>
+    <template id="zi">
+        <div>
+            <h1>aaa</h1>
+            <h1>{{mess1}}</h1>
+        </div>
+    </template>
+ <script> 
+ //子组件
+    const s1 ={
+        template:'#zi',
+        data() {
+            return {
+                zi_m:'子组件数据'
+            }
+        },
+        props:{
+            mess1:{
+                type:String,
+                default:'没传值的默认值'
+            },
+            mess2:{
+                type:Array,
+                default(){
+                 return   [1,2,3,4,5,6]
+                }
+            }
+        }
+    }
+
+
+    const s2={
+        components:{
+            use_zi:s1
+        },
+        template:'#fu',
+        data() {
+            return {
+                mess1_fu:'父中准备穿给子组件的值',
+                mess2_fu:[a,s,d,f,g,c],
+                
+        }
+            }
+        }
+            
+    
+
+
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+      
+      },
+      components:{
+          use_fu:s2
+      }
+     
+        }) 
+    </script> 
+     
+</body> 
+</html> 

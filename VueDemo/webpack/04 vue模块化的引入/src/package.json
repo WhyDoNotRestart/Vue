@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "all": "^0.0.0",
+    "css-loader": "^3.6.0"
+  },
+  "dependencies": {
+    "style-loader": "^3.3.1"
+  }
+}

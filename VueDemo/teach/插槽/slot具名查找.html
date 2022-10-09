@@ -1,0 +1,55 @@
+ <!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+    <script src="vue.min.js"></script> 
+</head> 
+<body> 
+ 
+    <div id="vue"> 
+        <use_fu>
+            <span slot="a2">你好</span>
+            <button slot="a3">你好3</button>
+        </use_fu>
+        
+    </div> 
+    <template id="a1">
+        <div>
+            {{mz}}
+            <!-- 父组件中使用，全部换成使用的标签 ，如何指定修改 -->
+              <!-- 添加name后只会修改没加name的标签 -->
+               <!-- 在父组件使用中的添加组件加上 -->
+            <slot name="a1"><span>左边</span></slot>
+            <slot name="a2"><span>中间</span></slot>
+            <slot name="a3"><span>右边</span></slot>
+        </div>
+    </template>
+ <script> 
+ const zi={
+     template:'#a1',
+     data() {
+         return {
+             mz:'子数据'
+         }
+     },
+ }
+   const vu = new Vue({ 
+      el: '#vue', 
+      data: { 
+          mf:'父数据'
+      },
+      methods:{ 
+                      
+      }, 
+      components:{
+          use_fu:zi
+      }
+      
+    }) 
+    </script> 
+     
+</body> 
+</html> 
